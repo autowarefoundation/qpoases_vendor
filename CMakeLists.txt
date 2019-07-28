@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 3.5)
 
 project(qpoases_vendor)
 
-set(PACKAGE_VERSION 3.2.0)
+find_package(catkin REQUIRED)
+
+catkin_package(
+)
 
 include(ExternalProject)
 ExternalProject_Add(qpoases_3_2
@@ -25,12 +28,3 @@ install(
   FILES ${SOURCE_DIR}/bin/libqpOASES.so
   DESTINATION lib
 )
-
-configure_file(qpoases_vendorConfig.cmake.in "${PROJECT_BINARY_DIR}/qpoases_vendorConfig.cmake" @ONLY)
-configure_file(qpoases_vendorConfig-version.cmake.in "${PROJECT_BINARY_DIR}/qpoases_vendorConfig-version.cmake" @ONLY)
-
-install(FILES
-  "${PROJECT_BINARY_DIR}/qpoases_vendorConfig.cmake"
-  "${PROJECT_BINARY_DIR}/qpoases_vendorConfig-version.cmake"
-  DESTINATION share/${PROJECT_NAME}/cmake
-  )
