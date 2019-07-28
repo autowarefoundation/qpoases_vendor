@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 project(qpoases_vendor)
 
-find_package(ament_cmake REQUIRED)
+set(PACKAGE_VERSION 3.2.0)
 
 include(ExternalProject)
 ExternalProject_Add(qpoases_3_2
@@ -34,5 +34,3 @@ install(FILES
   "${PROJECT_BINARY_DIR}/qpoases_vendorConfig-version.cmake"
   DESTINATION share/${PROJECT_NAME}/cmake
   )
-
-ament_package()
