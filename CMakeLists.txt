@@ -71,7 +71,7 @@ add_custom_command(OUTPUT ${qpOASES_PYTHON_LIB}
 
 catkin_package(
   INCLUDE_DIRS ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  LIBRARIES qpOASES qpOASES_Python
+  LIBRARIES qpOASES
 )
 
 install(DIRECTORY ${SOURCE_DIR}/include/
