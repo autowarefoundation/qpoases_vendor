@@ -15,6 +15,13 @@ ExternalProject_Add(qpoases_3_2
 
 ExternalProject_Get_property(qpoases_3_2 SOURCE_DIR)
 
+set(qpOASES_CXX_LIBRARY ${SOURCE_DIR}/bin/libqpOASES.so)
+
+add_custom_target(create_include_dir ALL
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CATKIN_GLOBAL_INCLUDE_DESTINATION}/${PROJECT_NAME}
+  DEPENDS qpoases_3_2
+)
+
 # "We do not recommend using GLOB to collect a list of source files from your source tree."
 set(qpOASES_SRC
   ${SOURCE_DIR}/src/BLASReplacement.cpp
@@ -40,16 +47,16 @@ set(qpOASES_PYTHON_SRC
   ${SOURCE_DIR}/interfaces/python/qpoases.pyx
 )
 
-# the files listed above are present when qpoases_svn (i.e. getting source files) is completed
+# the files listed above are present when qpoases_3_2 (i.e. getting source files) is completed
 add_custom_command(OUTPUT ${qpOASES_SRC} ${qpOASES_PYTHON_SRC}
-  DEPENDS qpoases_svn
+  DEPENDS qpoases_3_2
 )
 
 # Custom build Python wrappers
 add_custom_target(qpOASES_Python ALL
   COMMAND python setup.py build_ext --include-dirs ${SOURCE_DIR}/include ${INCLUDE_DIRECTORIES} --build-lib ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION} --build-temp ${CMAKE_CURRENT_BINARY_DIR} --sources ${qpOASES_PYTHON_SRC} ${qpOASES_SRC}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  DEPENDS qpoases_svn
+  DEPENDS qpoases_3_2
   COMMENT "Building Python wrappers."
 )
 
@@ -63,22 +70,18 @@ add_custom_command(OUTPUT ${qpOASES_PYTHON_LIB}
 )
 
 catkin_package(
-  LIBRARIES qpOASES_Python
+  INCLUDE_DIRS ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  LIBRARIES qpOASES qpOASES_Python
+)
+
+install(DIRECTORY ${SOURCE_DIR}/include/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
 
 install(FILES ${qpOASES_PYTHON_LIB}
   DESTINATION ${CATKIN_GLOBAL_PYTHON_DESTINATION}
 )
 
-install(
-  DIRECTORY ${SOURCE_DIR}/include/qpOASES
-  DESTINATION include
-)
-install(
-  FILES ${SOURCE_DIR}/include/qpOASES.hpp
-  DESTINATION include
-)
-install(
-  FILES ${SOURCE_DIR}/bin/libqpOASES.so
-  DESTINATION lib
+install(FILES ${qpOASES_CXX_LIBRARY}
+  DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
