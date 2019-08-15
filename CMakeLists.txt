@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 2.8.8)
 
 project(qpoases_vendor)
 
@@ -6,6 +6,9 @@ find_package(catkin REQUIRED)
 
 include(ExternalProject)
 ExternalProject_Add(qpoases_3_2
+  # This has to be downloaded in the source directory for
+  # catkin_package to be able to find the include folder
+  SOURCE_DIR ${CMAKE_SOURCE_DIR}/qpoases_3_2
   SVN_REPOSITORY https://projects.coin-or.org/svn/qpOASES/stable/3.2
   SVN_TRUST_CERT TRUE
   CONFIGURE_COMMAND ""
@@ -16,11 +19,6 @@ ExternalProject_Add(qpoases_3_2
 ExternalProject_Get_property(qpoases_3_2 SOURCE_DIR)
 
 set(qpOASES_CXX_LIBRARY ${SOURCE_DIR}/bin/libqpOASES.so)
-
-add_custom_target(create_include_dir ALL
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CATKIN_GLOBAL_INCLUDE_DESTINATION}/${PROJECT_NAME}
-  DEPENDS qpoases_3_2
-)
 
 # "We do not recommend using GLOB to collect a list of source files from your source tree."
 set(qpOASES_SRC
@@ -70,12 +68,15 @@ add_custom_command(OUTPUT ${qpOASES_PYTHON_LIB}
 )
 
 catkin_package(
-  INCLUDE_DIRS ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  INCLUDE_DIRS ${SOURCE_DIR}/include
   LIBRARIES qpOASES
 )
 
 install(DIRECTORY ${SOURCE_DIR}/include/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  # This allows users to include "qpOASES.hpp" without
+  # the package name and doesn't require modification
+  # of the other header files with the package name
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}/..
 )
 
 install(FILES ${qpOASES_PYTHON_LIB}
