@@ -11,14 +11,13 @@ ExternalProject_Add(qpoases_3_2
   SOURCE_DIR ${CMAKE_SOURCE_DIR}/qpoases_3_2
   SVN_REPOSITORY https://projects.coin-or.org/svn/qpOASES/stable/3.2
   SVN_TRUST_CERT TRUE
-  CONFIGURE_COMMAND ""
   BUILD_IN_SOURCE TRUE
   INSTALL_COMMAND ""
 )
 
 ExternalProject_Get_property(qpoases_3_2 SOURCE_DIR)
 
-set(qpOASES_CXX_LIBRARY ${SOURCE_DIR}/bin/libqpOASES.so)
+set(qpOASES_CXX_LIBRARY ${SOURCE_DIR}/libs/libqpOASES.a)
 
 # "We do not recommend using GLOB to collect a list of source files from your source tree."
 set(qpOASES_SRC
