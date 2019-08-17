@@ -6,9 +6,6 @@ find_package(catkin REQUIRED)
 
 include(ExternalProject)
 ExternalProject_Add(qpoases_3_2
-  # This has to be downloaded in the source directory for
-  # catkin_package to be able to find the include folder
-  SOURCE_DIR ${CMAKE_SOURCE_DIR}/qpoases_3_2
   SVN_REPOSITORY https://projects.coin-or.org/svn/qpOASES/stable/3.2
   SVN_TRUST_CERT TRUE
   BUILD_IN_SOURCE TRUE
@@ -67,7 +64,6 @@ add_custom_command(OUTPUT ${qpOASES_PYTHON_LIB}
 )
 
 catkin_package(
-  # Fake include dir to export
   INCLUDE_DIRS include
   LIBRARIES qpOASES
 )
@@ -83,5 +79,3 @@ install(FILES ${qpOASES_PYTHON_LIB}
 install(FILES ${qpOASES_CXX_LIBRARY}
   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
-
-set(qpoases_vendor_INCLUDE_DIRS ${SOURCE_DIR}/include)
