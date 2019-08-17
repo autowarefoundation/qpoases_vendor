@@ -73,10 +73,7 @@ catkin_package(
 )
 
 install(DIRECTORY ${SOURCE_DIR}/include/
-  # This allows users to include "qpOASES.hpp" without
-  # the package name and doesn't require modification
-  # of the other header files with the package name
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}/..
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
 
 install(FILES ${qpOASES_PYTHON_LIB}
