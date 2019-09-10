@@ -2,8 +2,8 @@
 Changelog for package qpoases_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+3.2.0 (2019-09-10)
+------------------
 * Fixing schema link for package.xml.
 * CI: Adding basic CI script.
 * Install in standard package-prefixed include dir.
