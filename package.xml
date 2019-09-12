@@ -16,6 +16,8 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <depend>subversion</depend>
+
   <export>
     <build_type>catkin</build_type>
   </export>
