@@ -2,6 +2,11 @@
 Changelog for package qpoases_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Adding missing dependency on subversion.
+* Contributors: Joshua Whitley
+
 3.2.0 (2019-09-10)
 ------------------
 * Fixing schema link for package.xml.
