@@ -4,7 +4,7 @@
   schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>qpoases_vendor</name>
-  <version>3.2.0</version>
+  <version>3.2.1</version>
   <description>
     Wrapper around qpOASES to make it available to the ROS ecosystem.
   </description>

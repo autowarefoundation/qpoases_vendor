@@ -2,8 +2,8 @@
 Changelog for package qpoases_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+3.2.1 (2019-10-15)
+------------------
 * Adding missing dependency on subversion.
 * Contributors: Joshua Whitley
 
