@@ -2,8 +2,8 @@
 Changelog for package qpoases_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+3.2.3 (2021-06-24)
+------------------
 * Updating for ROS2
 * Contributors: Joshua Whitley
 
