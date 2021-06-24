@@ -1,8 +1,9 @@
-cmake_minimum_required(VERSION 2.8.8)
+cmake_minimum_required(VERSION 3.5)
 
 project(qpoases_vendor)
 
-find_package(catkin REQUIRED)
+find_package(ament_cmake_auto REQUIRED)
+ament_auto_find_build_dependencies()
 
 include(ExternalProject)
 ExternalProject_Add(qpoases_3_2
@@ -16,15 +17,17 @@ ExternalProject_Get_property(qpoases_3_2 SOURCE_DIR)
 
 set(qpOASES_CXX_LIBRARY ${SOURCE_DIR}/libs/libqpOASES.a)
 
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES qpOASES
-)
+add_library(qpOASES STATIC IMPORTED
+  IMPORTED_LOCATION ${qpOASES_CXX_LIBRARY})
 
 install(DIRECTORY ${SOURCE_DIR}/include/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  DESTINATION include
 )
 
 install(FILES ${qpOASES_CXX_LIBRARY}
-  DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  DESTINATION lib
 )
+
+ament_export_libraries(${qpOASES})
+
+ament_auto_package()
