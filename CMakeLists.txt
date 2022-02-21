@@ -19,9 +19,6 @@ ExternalProject_Get_property(qpoases_3_2 SOURCE_DIR)
 
 set(qpOASES_CXX_LIBRARY ${SOURCE_DIR}/libs/libqpOASES.a)
 
-add_library(qpOASES STATIC IMPORTED
-  IMPORTED_LOCATION ${qpOASES_CXX_LIBRARY})
-
 install(DIRECTORY ${SOURCE_DIR}/include/
   DESTINATION include
 )
