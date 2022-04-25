@@ -8,7 +8,8 @@ ament_auto_find_build_dependencies()
 
 include(ExternalProject)
 ExternalProject_Add(qpoases_3_2
-  SVN_REPOSITORY https://projects.coin-or.org/svn/qpOASES/stable/3.2
+  GIT_REPOSITORY https://github.com/coin-or/qpOASES
+  GIT_TAG stable/3.2
   SVN_TRUST_CERT TRUE
   BUILD_IN_SOURCE TRUE
   CMAKE_ARGS "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"
