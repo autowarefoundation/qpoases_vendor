@@ -16,7 +16,7 @@
 
   <buildtool_depend>ament_cmake_auto</buildtool_depend>
 
-  <depend>subversion</depend>
+  <depend>git</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

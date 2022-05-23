@@ -7,8 +7,9 @@ ament_auto_find_build_dependencies()
 
 include(ExternalProject)
 ExternalProject_Add(qpoases_3_2
-  SVN_REPOSITORY https://projects.coin-or.org/svn/qpOASES/stable/3.2
-  SVN_TRUST_CERT TRUE
+  GIT_REPOSITORY https://github.com/coin-or/qpOASES
+  # https://github.com/coin-or/qpOASES/releases/tag/releases%2F3.2.1
+  GIT_TAG 51d3fbea30142d3acbf40cf7a1c519efc27ea67b
   BUILD_IN_SOURCE TRUE
   INSTALL_COMMAND ""
 )
