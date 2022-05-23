@@ -12,7 +12,7 @@
   <license>Apache License 2.0</license>  <!-- This package is Apache 2.0 -->
   <license>LGPL</license>  <!-- qpOASES is LGPL 2.1 -->
 
-  <url type="website">https://projects.coin-or.org/qpOASES</url>
+  <url type="website">https://github.com/coin-or/qpOASES</url>
 
   <buildtool_depend>ament_cmake_auto</buildtool_depend>
 
